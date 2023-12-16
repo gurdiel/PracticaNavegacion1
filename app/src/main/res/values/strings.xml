@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">PracticaNavegacion1</string>
+    <string name="bombilla">Bombilla</string>
+    <string name="sem_foro">Semáforo</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
