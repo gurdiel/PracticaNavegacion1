@@ -1,12 +1,15 @@
 package com.example.practicanavegacion1.semaforo
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.practicanavegacion1.R
 import com.example.practicanavegacion1.databinding.ActivitySemaforoBinding
+import com.example.practicanavegacion1.semaforo.model.Semaforo
 
-class SemaforoActivity : AppCompatActivity() {
+class SemaforoActivity : AppCompatActivity(),CambioSemaforoListener {
     lateinit var binding: ActivitySemaforoBinding
+    private val semaforo = Semaforo()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySemaforoBinding.inflate(layoutInflater)
@@ -26,5 +29,16 @@ class SemaforoActivity : AppCompatActivity() {
                 .add(fragmentBotonContainer.id, semaforoBtnFragment)
                 .commit()
         }
+    }
+
+    override fun onClick() {
+        semaforo.avanzar()
+        val semaforoColorFragment = SemaforoColorFragment.newInstance(semaforo.color)
+        val fragmentSemaforoContainer = binding.fragmentColorSemaforo
+        supportFragmentManager
+            .beginTransaction()
+            .replace(fragmentSemaforoContainer.id, semaforoColorFragment)
+            .commit()
+
     }
 }
